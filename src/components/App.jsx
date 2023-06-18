@@ -22,20 +22,20 @@ export class App extends Component {
 
   deliteContact = (contactId) => {
     this.setState(prevState => ({
-         contacts: prevState.contacts.filter(contacts => contacts.id !== contactId)
+        contacts: prevState.contacts.filter(contacts => contacts.id !== contactId)
        }
     ))
   }
 
   filtreInputChange = (e) => {
-     this.setState({filter: e.currentTarget.value})
+    this.setState({filter: e.currentTarget.value})
   }
 
   filterContacts = () => {
     const { filter, contacts } = this.state;
     const normalizeToLowerCase = filter.toLowerCase();
     return contacts.filter(({ name }) => name.toLowerCase().includes(normalizeToLowerCase))
-} 
+  } 
   
 
   render() {
@@ -47,10 +47,12 @@ export class App extends Component {
       <div>
         <h1>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} contacts={contacts} />
-        <h1>Contacts</h1>
+        <h2>Contacts</h2>
         {contactsLength !== 0 && <Filter value={filter} filterInputChange={this.filtreInputChange} />}
-        <ContactList contacts={filtredContacts}
-          onDeliteContact={this.deliteContact} /> 
+        <ContactList
+          contacts={filtredContacts}
+          onDeliteContact={this.deliteContact}/> 
     </div>
-  );}
+    );
+  }
 };
