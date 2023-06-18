@@ -1,6 +1,8 @@
 import { Component } from "react";
+import { PropTypes } from "prop-types";
 
 export class Form extends Component {
+
     state = {
         nmae: '',
         number: ''
@@ -58,3 +60,13 @@ export class Form extends Component {
           <button type="submit">Add contact</button>
         </form>)}
 }
+
+Form.propTypes = {
+        contacts: PropTypes.arrayOf(
+            PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,
+        })).isRequired,
+        onSubmit: PropTypes.func.isRequired, 
+    }
