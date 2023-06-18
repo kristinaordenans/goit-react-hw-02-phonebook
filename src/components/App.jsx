@@ -1,8 +1,9 @@
 import { Component } from 'react';
 import { ContactList } from './ContactList/ContactList';
-import { Form } from './Form/Form';
+import { ContactForm } from './ContacForm/ContactForm';
 import { Filter } from './FilterContacts/FilterContacts';
 import { nanoid } from 'nanoid';
+import { Container, ContainerTitle, ContactsTitle } from './App.styled';
 
 
 export class App extends Component {
@@ -44,15 +45,15 @@ export class App extends Component {
     const contactsLength = contacts.length;
 
     return (
-      <div>
-        <h1>Phonebook</h1>
-        <Form onSubmit={this.formSubmitHandler} contacts={contacts} />
-        <h2>Contacts</h2>
+      <Container>
+        <ContainerTitle>Phonebook</ContainerTitle>
+        <ContactForm onSubmit={this.formSubmitHandler} contacts={contacts} />
+        <ContactsTitle>Contacts</ContactsTitle>
         {contactsLength !== 0 && <Filter value={filter} filterInputChange={this.filtreInputChange} />}
         <ContactList
           contacts={filtredContacts}
           onDeliteContact={this.deliteContact}/> 
-    </div>
+    </Container>
     );
   }
 };

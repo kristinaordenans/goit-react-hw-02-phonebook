@@ -1,7 +1,11 @@
 import { Component } from "react";
 import { PropTypes } from "prop-types";
 
-export class Form extends Component {
+import { Form, Button, Label, Input, Span} from "./ContactForm.styled";
+
+
+
+export class ContactForm extends Component {
 
     state = {
         nmae: '',
@@ -39,29 +43,37 @@ export class Form extends Component {
     
     render() {
         const { name, number } = this.state;
-        return (<form onSubmit={this.handlrAddToContactList}>
-          <label>Name</label>
-          <input type="text"
+      return (
+        <>
+        <Form onSubmit={this.handlrAddToContactList}>
+            <Label>
+              <Span>Name</Span>
+              <Input type="text"
                  value={name}
                  onChange={this.handleInputChange}
                  name="name"
                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                 required
-        />
-          <label>Phone</label>
-          <input type="tel"
+                 required/>
+              </Label>
+            <Label>
+              <Span>Phone</Span>
+              <Input type="tel"
                  value={number}
                  onChange={this.handleInputChange}
                  name="number"
                  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                  required />
-          <button type="submit">Add contact</button>
-        </form>)}
+              </Label>
+            <Button type="submit">Add contact</Button>
+          </Form>
+        </>
+      )
+    }
 }
 
-Form.propTypes = {
+ContactForm.propTypes = {
         contacts: PropTypes.arrayOf(
             PropTypes.shape({
             id: PropTypes.string.isRequired,
