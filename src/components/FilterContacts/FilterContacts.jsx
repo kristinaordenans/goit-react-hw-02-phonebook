@@ -1,11 +1,12 @@
 import { PropTypes } from "prop-types";
+import { FindContactInput, SearchTitle } from "./FilterContacts.styled";
 
 
 export const Filter = ({ value, filterInputChange }) => {
     return (
         <div>
-            <h3>Find contacts by name</h3>
-            <input type="text" value={value} onChange={filterInputChange} />
+            <SearchTitle>Find contacts by name</SearchTitle>
+            <FindContactInput type="text" value={value} onChange={filterInputChange} />
         </div>
     )
 }
